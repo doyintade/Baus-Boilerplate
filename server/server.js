@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import handlebars from 'express-handlebars';
+import baus from 'baus-cms';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
@@ -26,6 +27,11 @@ const hbs = handlebars.create({
 module.exports = {
   start: function() {
     let server = express();
+
+    baus.init({
+      name: 'Baus Test',
+      server: server
+    });
 
     server.set("env", env);
     server.set("host", host); 
